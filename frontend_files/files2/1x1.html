@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESP IOT DASHBOARD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="http://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
+  </head>
+  <body onload = "initClock()">
+    <div class="topnav">
+      <h1>ESP WEB SERVER GAUGES</h1>
+    </div>
+    <div class="grid-background2">
+      <div class="item">
+        <div class="DateTime">
+          <div class="date">
+            <span id="DayName">Day</span>,
+            <span id="month">Month</span> 
+            <span id="DayNum">00</span>,
+            <span id="year">Year</span>
+          </div>
+          <div class="time">
+            <span id="hour">00</span>:
+            <span id="minute">00</span>
+            <span id="period">AM</span> 
+          </div>
+        </div>
+        <script type="text/javascript">
+        function updateClock(){
+          var now = new Date();
+          var dname = now.getDay(),
+          mo = now.getMonth(),
+          dnum = now.getDate(),
+          yr = now.getFullYear(),
+          hou = now.getHours(),
+          min = now.getMinutes(),
+          pe = "AM";
+
+          if(hou == 0){
+            hou = 12;
+          }
+          if(hou > 12){
+            hou = hou - 12;
+            pe = "PM";
+          }
+          Number.prototype.pad = function(digits){
+            for(var n = this.toString(); n.length < digits; n = 0+n);
+            return n;
+          }
+
+          var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          var ids = ["DayName", "month", "DayNum", "year", "hour", "minute", "period"];
+          var values = [week[dname], months[mo], dnum.pad(2), yr.pad(2), hou.pad(2), min.pad(2), pe];
+    
+          for(var i=0;i<ids.length;i++)
+          document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+
+        }
+
+        function initClock(){
+          updateClock();
+          window.setInterval("updateClock()", 1);
+        }
+        </script>
+        <a href="rooms1/NPC">    
+          <button class="btn">Room 1</button>
+        </a>
+        <br>
+        <br>
+        <br><br><br><br>
+        <h3 class="grid-content111">
+          Temprature
+          <!--<img class="img1" src="./temp.png">-->
+          <br>
+          <input class="temp" type="textbox" name="display">
+        </h3>
+        <br><br>
+        <h3 class="grid-content222">
+          Humidity
+          <!--<img class="img2" src="./hum.png">-->
+          <br>
+          <input class="hum" type="textbox" name="display">
+        </h3> 
+        <br>
+        <br>
+        <br><br><br><br><br><br>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

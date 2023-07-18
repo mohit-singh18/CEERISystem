@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESP IOT DASHBOARD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="http://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <h1>ESP WEB SERVER GAUGES</h1>
+    </div>
+    <div class="grid-background1">
+      <div class="item1">
+        <div class="timeBox">
+          <p id="indiaTime1"></p>
+        </div>
+        <script>
+          var getTime = function(){
+            document.getElementById("indiaTime1").innerHTML = new Date().toLocaleString("en-us", {timeZone:'Asia/Kolkata', timeStyle:'medium', hourCycle:"h24"});
+          }
+          getTime();
+          setInterval(getTime, 1000);
+        </script>
+        <a href="./1.html">    
+          <button class="btn">Room 1</button>
+        </a>
+        <br>
+        <br>
+        <br>
+        <h3 class="grid-content1">
+          Temprature
+          <!--<img class="img1" src="./temp.png">-->
+          <input class="temp1" type="textbox" name="display">
+        </h3>
+        <br>
+        <h3 class="grid-content2">
+          Humidity
+          <!--<img class="img2" src="./hum.png">-->
+          <input class="hum1" type="textbox" name="display">
+        </h3> 
+        <br>
+        <br>
+        <br><br><br>
+      </div>
+      <div class="item2">
+        <div class="timeBox">
+          <p id="indiaTime2"></p>
+        </div>
+        <script>
+          var getTime = function(){
+            document.getElementById("indiaTime2").innerHTML = new Date().toLocaleString("en-us", {timeZone:'Asia/Kolkata', timeStyle:'medium', hourCycle:"h24"});
+          }
+          getTime();
+          setInterval(getTime, 1000);
+        </script>
+          
+        <a href="./2.html">
+          <button class="btn">Room 2</button>
+        </a>
+        <br>
+        <br>
+        <br>
+        <h3 class="grid-content1">
+          Temprature
+          <!--<img class="img1" src="./temp.png">-->
+          <input class="temp1" type="textbox" name="display">
+        </h3>
+        <br>
+        <h3 class="grid-content2">
+          Humidity
+          <!--<img class="img2" src="./hum.png">-->
+          <input class="hum1" type="textbox" name="display">
+        </h3>  
+        <br>
+        <br>
+        <br><br><br>
+      </div>
+      <div class="item3">
+        <div class="timeBox">
+          <p id="indiaTime3"></p>
+        </div>
+        <script>
+          var getTime = function(){
+            document.getElementById("indiaTime3").innerHTML = new Date().toLocaleString("en-us", {timeZone:'Asia/Kolkata', timeStyle:'medium', hourCycle:"h24"});
+          }
+          getTime();
+          setInterval(getTime, 1000);
+        </script>
+        <a href="./3.html">
+          <button class="btn">Room 3</button>
+        </a>
+        <br>
+        <br>
+        <br>
+        <h3 class="grid-content1">
+          Temprature
+          <!--<img class="img1" src="./temp.png">-->
+          <input class="temp1" type="textbox" name="display">
+        </h3>
+        <br>
+        <h3 class="grid-content2">
+          Humidity
+          <!--<img class="img2" src="./hum.png">-->
+          <input class="hum1" type="textbox" name="display">
+        </h3> 
+        <br>
+        <br>
+        <br><br><br>
+      </div>
+      <div class="item4">
+        <div class="timeBox">
+          <p id="indiaTime4"></p>
+        </div>
+        <script>
+          var getTime = function(){
+            document.getElementById("indiaTime4").innerHTML = new Date().toLocaleString("en-us", {timeZone:'Asia/Kolkata', timeStyle:'medium', hourCycle:"h24"});
+          }
+          getTime();
+          setInterval(getTime, 1000);
+        </script>
+        <a href="./4.html">
+          <button class="btn">Room 4</button>
+        </a>
+        <br>
+        <br>
+        <br>
+        <h3 class="grid-content1">
+          Temprature
+          <!--<img class="img1" src="./temp.png">-->
+          <input class="temp1" type="textbox" name="display">
+        </h3>
+        <br>
+        <h3 class="grid-content2">
+          Humidity
+          <!--<img class="img2" src="./hum.png">-->
+          <input class="hum1" type="textbox" name="display">
+        </h3> 
+        <br>
+        <br>
+        <br><br><br>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
