@@ -131,11 +131,12 @@ async function getReadings(route) {
   fetch(url + "sensor-readings" + route)
     .then((res) => {
       return res.json();
-    }).then(async(data) => {
+    })
+    .then(async (data) => {
        if (data) {
         gaugeTemp.value = data.temperature;
         gaugeHum.value = data.humidity;
-      }
-      )
+      })
+    .catch((err) => console.log(err));
           }
 constantReadings("/"+id[2]);
