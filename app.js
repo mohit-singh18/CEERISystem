@@ -17,8 +17,11 @@ dotenv.config();
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
+
+// mongo setup
+const clientOptions = { serverApi: { version: '1', strict: true, deprecationErrors: true } };
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_URL,clientOptions)
   .then(() => {
     console.log("DB Connected");
   })
