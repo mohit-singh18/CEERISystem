@@ -97,23 +97,7 @@ async function getReadings(route) {
       return res.json();
     })
     .then(async (data) => {
-      if (data) {
-        gaugeTemp.value = data.temperature;
-        gaugeHum.value = data.humidity;
-      }
-      if (data.temperature > 35) {
-        if ("serviceWorker" in navigator) {
-          registerServiceWorker("temp").catch(console.log);
-        }
-      }
-      if (data.humidity > 95) {
-        if ("serviceWorker" in navigator) {
-          registerServiceWorker("hum").catch(console.log);
-        }
-      }
-    })
-    .catch((err) => console.log(err));
-}
+      
 function constantReadings(route){
   if (!!window.EventSource) {
     var source = new EventSource(url + "events" + route);
@@ -136,25 +120,7 @@ function constantReadings(route){
       false
     );
   
-    source.onmessage = (e) => {
-      const data = JSON.parse(e.data);
-      if (!data) {
-        gaugeTemp.value = 0;
-        gaugeHum.value = 0;
-      }
-      gaugeTemp.value = data.temperature;
-      gaugeHum.value = data.humidity;
-      if (data.temperature > 36) {
-        if ("serviceWorker" in navigator) {
-          registerServiceWorker("temp").catch(console.log);
-        }
-      }
-      if (data.humidity > 95) {
-        if ("serviceWorker" in navigator) {
-          registerServiceWorker("hum").catch(console.log);
-        }
-      }
-    };
+   
   }
   
 }
