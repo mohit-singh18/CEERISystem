@@ -1,7 +1,5 @@
 //constants
-const url = "http://0.0.0.0:8080/";
-const public_key =
-  "BHYvQoGPabiaYCItSzuDI8APJskp-KsbFOd2R_6UJBQWdgWYdLh39aN_x0lmJFh5bsOV1V9x0i1jNlaGZHdD0tM";
+const url = "https://44.225.181.72:8080/";
 let curURL = window.location.pathname.toString();
 let id = curURL.split("/")
 
@@ -92,36 +90,6 @@ var gaugeHum = new RadialGauge({
 }).draw();
 
 // <-- Functions -->
-
-async function registerServiceWorker(x) {
-  const register = await navigator.serviceWorker.register( "/worker.js", {
-    scope: "/",
-  });
-
-  const subscription = await register.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: public_key,
-  });
-
-  if (x === "temp") {
-    await fetch(`/tempNotification/${id[2]}`, {
-      method: "POST",
-      body: JSON.stringify(subscription),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
-  if (x === "hum") {
-    await fetch(`/humNotification/${id[2]}`, {
-      method: "POST",
-      body: JSON.stringify(subscription),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-  }
-}
 
 async function getReadings(route) {
   fetch(url + "sensor-readings" + route)
