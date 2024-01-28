@@ -40,6 +40,6 @@ app.use("/", sensorReadings);
 //
 app.listen(
     process.env.PORT,
-    "0.0.0.0",
+    "44.225.181.72",
     console.log(`Listening to port ${process.env.PORT}`)
   );
