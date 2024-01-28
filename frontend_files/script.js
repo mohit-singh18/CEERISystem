@@ -111,6 +111,16 @@ function constantReadings(route){
       },
       false
     );
+
+     source.onmessage = (e) => {
+      const data = JSON.parse(e.data);
+      if (!data) {
+        gaugeTemp.value = 0;
+        gaugeHum.value = 0;
+      }
+      gaugeTemp.value = data.temperature;
+      gaugeHum.value = data.humidity;
+    };
   
    
   }
@@ -121,6 +131,11 @@ async function getReadings(route) {
   fetch(url + "sensor-readings" + route)
     .then((res) => {
       return res.json();
-    })
+    }).then(async(data) => {
+       if (data) {
+        gaugeTemp.value = data.temperature;
+        gaugeHum.value = data.humidity;
+      }
+      )
           }
 constantReadings("/"+id[2]);
