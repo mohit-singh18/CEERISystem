@@ -90,14 +90,6 @@ var gaugeHum = new RadialGauge({
 }).draw();
 
 // <-- Functions -->
-
-async function getReadings(route) {
-  fetch(url + "sensor-readings" + route)
-    .then((res) => {
-      return res.json();
-    })
-    .then(async (data) => {
-      
 function constantReadings(route){
   if (!!window.EventSource) {
     var source = new EventSource(url + "events" + route);
@@ -124,4 +116,11 @@ function constantReadings(route){
   }
   
 }
+//
+async function getReadings(route) {
+  fetch(url + "sensor-readings" + route)
+    .then((res) => {
+      return res.json();
+    })
+          }
 constantReadings("/"+id[2]);
