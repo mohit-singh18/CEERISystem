@@ -136,7 +136,8 @@ async function getReadings(route) {
        if (data) {
         gaugeTemp.value = data.temperature;
         gaugeHum.value = data.humidity;
-      })
+      }
+    })
     .catch((err) => console.log(err));
           }
 constantReadings("/"+id[2]);
