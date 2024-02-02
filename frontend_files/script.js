@@ -1,5 +1,5 @@
 //constants
-const url = "https://ceeriservice.onrender.com/";
+const url = "https://ceeri-service.onrender.com";
 let curURL = window.location.pathname.toString();
 let id = curURL.split("/")
 
