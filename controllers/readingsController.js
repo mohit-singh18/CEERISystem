@@ -9,6 +9,7 @@ const getData = (req, res) => {
   // console.log(app.get('data'))
   try {
     // const savedData = await newData.save();
+    res.setHeader( "Access-Control-Allow-Origin", "https://ceeri-service.onrender.com/" );
     res.status(201).json();
     // console.log();
   } catch (err) {
@@ -17,6 +18,7 @@ const getData = (req, res) => {
 };
 const sendData = (req, res) => {
   const deviceID = req.params['id'];
+  res.setHeader( "Access-Control-Allow-Origin", "https://ceeri-service.onrender.com/" );
   res.status(200).json(latestReadings[deviceID]);
 };
 const eventData = (req, res) => {
@@ -24,7 +26,8 @@ const eventData = (req, res) => {
   const headers = {
     'Content-type': 'text/event-stream',
     'Connection' : 'keep-alive',
-    'Cache-Control' : 'no-cache'
+    'Cache-Control' : 'no-cache',
+    'Access-Control-Allow-Origin':  'https://ceeri-service.onrender.com/'
   };
   res.writeHead(200,headers);
 
