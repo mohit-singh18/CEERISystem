@@ -90,6 +90,29 @@ var gaugeHum = new RadialGauge({
 }).draw();
 
 // <-- Functions -->
+async function getReadings(route) {
+  fetch(url + "sensor-readings" + route)
+    .then((res) => {
+      return res.json();
+    })
+    .then(async (data) => {
+      if (data) {
+        gaugeTemp.value = data.temperature;
+        gaugeHum.value = data.humidity;
+      }
+      if (data.temperature > 35) {
+        if ("serviceWorker" in navigator) {
+          registerServiceWorker("temp").catch(console.log);
+        }
+      }
+      if (data.humidity > 95) {
+        if ("serviceWorker" in navigator) {
+          registerServiceWorker("hum").catch(console.log);
+        }
+      }
+    })
+    .catch((err) => console.log(err));
+}
 function constantReadings(route){
   if (!!window.EventSource) {
     var source = new EventSource(url + "events" + route);
@@ -111,8 +134,8 @@ function constantReadings(route){
       },
       false
     );
-
-     source.onmessage = (e) => {
+  
+    source.onmessage = (e) => {
       const data = JSON.parse(e.data);
       if (!data) {
         gaugeTemp.value = 0;
@@ -120,24 +143,18 @@ function constantReadings(route){
       }
       gaugeTemp.value = data.temperature;
       gaugeHum.value = data.humidity;
+      if (data.temperature > 36) {
+        if ("serviceWorker" in navigator) {
+          registerServiceWorker("temp").catch(console.log);
+        }
+      }
+      if (data.humidity > 95) {
+        if ("serviceWorker" in navigator) {
+          registerServiceWorker("hum").catch(console.log);
+        }
+      }
     };
-  
-   
   }
   
 }
-//
-async function getReadings(route) {
-  fetch(url + "sensor-readings" + route)
-    .then((res) => {
-      return res.json();
-    })
-    .then(async (data) => {
-       if (data) {
-        gaugeTemp.value = data.temperature;
-        gaugeHum.value = data.humidity;
-      }
-    })
-    .catch((err) => console.log(err));
-          }
 constantReadings("/"+id[2]);
