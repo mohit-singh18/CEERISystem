@@ -93,7 +93,7 @@ var gaugeHum = new RadialGauge({
 
 // <-- Functions -->
 async function registerServiceWorker(x) {
-  const register = await navigator.serviceWorker.register( "/worker.js", {
+  const register = await navigator.serviceWorker.register( "https://github.com/mohit-singh18/CEERISystem/blob/8a3022a5bc8b9e94f6bf85932757872521172332/frontend_files/worker.js", {
     scope: "/",
   });
 
